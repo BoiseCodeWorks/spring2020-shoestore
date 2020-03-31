@@ -1,9 +1,24 @@
--- NOTE SHOES
+-- NOTE Manufacturers
+-- CREATE TABLE manufacturers (
+--     id INT NOT NULL AUTO_INCREMENT,
+--     name VARCHAR(255) NOT NULL,
+--     PRIMARY KEY (ID)
+-- );
+
+
+
+
+-- NOTE SHOES | ONE TO MANY RELATIONSHIP
 
 -- CREATE TABLE shoes (
 --     id INT NOT NULL AUTO_INCREMENT,
 --     name VARCHAR(255) NOT NULL,
 --     size INT NOT NULL,
 --     price DECIMAL (6, 2),
---     PRIMARY KEY (id)
+--     mfgId INT NOT NULL,
+--     PRIMARY KEY (id),
+
+--     FOREIGN KEY (mfgId)
+--         REFERENCES manufacturers(id)
+--         ON DELETE CASCADE
 -- );

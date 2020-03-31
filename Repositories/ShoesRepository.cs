@@ -32,9 +32,9 @@ namespace shoestoore.Repositories
         {
             string sql = @"
             INSERT INTO shoes
-            (name, price, size)
+            (name, price, size, mfgId)
             VALUES
-            (@Name, @Price, @Size);
+            (@Name, @Price, @Size, @MfgId);
             SELECT LAST_INSERT_ID();
             ";
             newShoe.Id = _db.ExecuteScalar<int>(sql, newShoe);
@@ -47,7 +47,8 @@ namespace shoestoore.Repositories
             SET
                 name = @Name,
                 price = @Price,
-                size = @Size
+                size = @Size,
+                mfgId = @MfgId
             WHERE id = @Id;
             ";
             _db.Execute(sql, updated);
@@ -60,6 +61,10 @@ namespace shoestoore.Repositories
             return deleted == 1;
         }
 
-
+        internal IEnumerable<Shoe> GetShoesByMfgId(int Id)
+        {
+            string sql = "SELECT * FROM shoes WHERE mfgId = @Id";
+            return _db.Query<Shoe>(sql, new { Id });
+        }
     }
 }

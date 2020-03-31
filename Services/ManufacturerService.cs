@@ -5,22 +5,22 @@ using shoestoore.Repositories;
 
 namespace shoestoore.Services
 {
-    public class ShoesService
+    public class ManufacturersService
     {
-        private readonly ShoesRepository _repo;
-        public ShoesService(ShoesRepository repo)
+        private readonly ManufacturersRepository _repo;
+        public ManufacturersService(ManufacturersRepository repo)
         {
             _repo = repo;
         }
 
-        internal IEnumerable<Shoe> Get()
+        internal IEnumerable<Manufacturer> Get()
         {
             return _repo.Get();
         }
 
-        internal Shoe Get(int id)
+        internal Manufacturer Get(int id)
         {
-            Shoe found = _repo.Get(id);
+            Manufacturer found = _repo.Get(id);
             if (found == null)
             {
                 throw new Exception("Invalid Id");
@@ -28,9 +28,9 @@ namespace shoestoore.Services
             return found;
         }
 
-        internal Shoe Create(Shoe newShoe)
+        internal Manufacturer Create(Manufacturer newManufacturer)
         {
-            Shoe created = _repo.Create(newShoe);
+            Manufacturer created = _repo.Create(newManufacturer);
             if (created == null)
             {
                 throw new Exception("Create Request Failed");
@@ -38,13 +38,10 @@ namespace shoestoore.Services
             return created;
         }
 
-        internal Shoe Edit(Shoe updatedShoe)
+        internal Manufacturer Edit(Manufacturer updatedManufacturer)
         {
-            Shoe original = Get(updatedShoe.Id);
-            original.Name = updatedShoe.Name;
-            original.Price = updatedShoe.Price != 0 ? updatedShoe.Price : original.Price;
-            original.Size = updatedShoe.Size != 0 ? updatedShoe.Size : original.Size;
-            original.MfgId = updatedShoe.MfgId != 0 ? updatedShoe.MfgId : original.MfgId;
+            Manufacturer original = Get(updatedManufacturer.Id);
+            original.Name = updatedManufacturer.Name;
             _repo.Edit(original);
             return original;
         }
@@ -56,11 +53,6 @@ namespace shoestoore.Services
                 return "Successfully Deleted";
             }
             throw new Exception("Invalid Id");
-        }
-
-        internal IEnumerable<Shoe> GetShoesByMfgId(int id)
-        {
-            return _repo.GetShoesByMfgId(id);
         }
     }
 }

@@ -36,6 +36,8 @@ namespace shoestoore
             // Register Transients for Dependency Injection
             services.AddTransient<ShoesService>();
             services.AddTransient<ShoesRepository>();
+            services.AddTransient<ManufacturersService>();
+            services.AddTransient<ManufacturersRepository>();
 
         }
 
