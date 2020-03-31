@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
+using shoestoore.Repositories;
+using shoestoore.Services;
 
 namespace shoestoore
 {
@@ -26,6 +30,19 @@ namespace shoestoore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddScoped<IDbConnection>(x => CreateDbConnection());
+
+            // Register Transients for Dependency Injection
+            services.AddTransient<ShoesService>();
+            services.AddTransient<ShoesRepository>();
+
+        }
+
+        private IDbConnection CreateDbConnection()
+        {
+            var connectionString = Configuration["db:gearhost"];
+            return new MySqlConnection(connectionString);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
