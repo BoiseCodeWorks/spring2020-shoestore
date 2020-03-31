@@ -6,4 +6,9 @@ namespace shoestoore.Models
         public int CartId { get; set; }
         public int ShoeId { get; set; }
     }
+
+    public class DBCartShoe : CartShoes
+    {
+        public int csId { get; set; }
+    }
 }

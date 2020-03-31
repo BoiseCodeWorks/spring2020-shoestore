@@ -62,5 +62,10 @@ namespace shoestoore.Services
         {
             return _repo.GetShoesByMfgId(id);
         }
+
+        internal IEnumerable<Shoe> GetShoesByCartId(int id)
+        {
+            return _repo.GetShoesByCartId(id);
+        }
     }
 }

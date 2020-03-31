@@ -47,3 +47,16 @@
 --         REFERENCES shoes(id)
 --         ON DELETE CASCADE
 -- )
+
+
+
+
+-- NOTE Getting shoes by cart id
+-- SELECT s.* FROM cartshoes cs
+-- INNER JOIN shoes s ON s.id = cs.shoeId
+-- WHERE cartId = 1;
+
+
+
+-- api/carts/1/shoes
+

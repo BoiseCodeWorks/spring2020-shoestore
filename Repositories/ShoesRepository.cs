@@ -66,5 +66,14 @@ namespace shoestoore.Repositories
             string sql = "SELECT * FROM shoes WHERE mfgId = @Id";
             return _db.Query<Shoe>(sql, new { Id });
         }
+
+        internal IEnumerable<Shoe> GetShoesByCartId(int Id)
+        {
+            string sql = @"
+            SELECT s.* FROM cartshoes cs
+            INNER JOIN shoes s ON s.id = cs.shoeId
+            WHERE cartId = @Id;";
+            return _db.Query<Shoe>(sql, new { Id });
+        }
     }
 }

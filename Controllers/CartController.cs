@@ -11,9 +11,11 @@ namespace shoestoore.Controllers
     public class CartsController : ControllerBase
     {
         private readonly CartsService _cs;
-        public CartsController(CartsService cs)
+        private readonly ShoesService _ss;
+        public CartsController(CartsService cs, ShoesService ss)
         {
             _cs = cs;
+            _ss = ss;
         }
 
         // get all
@@ -41,6 +43,20 @@ namespace shoestoore.Controllers
             try
             {
                 return Ok(_cs.Get(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+
+        [HttpGet("{id}/shoes")]
+        public ActionResult<IEnumerable<Shoe>> GetShoesByCartId(int id)
+        {
+            try
+            {
+                return Ok(_ss.GetShoesByCartId(id));
             }
             catch (Exception e)
             {

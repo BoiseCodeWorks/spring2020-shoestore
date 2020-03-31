@@ -38,6 +38,10 @@ namespace shoestoore
             services.AddTransient<ShoesRepository>();
             services.AddTransient<ManufacturersService>();
             services.AddTransient<ManufacturersRepository>();
+            services.AddTransient<CartsService>();
+            services.AddTransient<CartsRepository>();
+            services.AddTransient<CartShoesService>();
+            services.AddTransient<CartShoesRepository>();
 
         }
 
