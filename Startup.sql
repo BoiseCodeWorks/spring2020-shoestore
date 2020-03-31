@@ -29,3 +29,21 @@
 --     name VARCHAR(255) NOT NULL,
 --     PRIMARY KEY (id)
 -- )
+
+
+-- NOTE CartShoes
+
+-- CREATE TABLE cartshoes (
+--     id INT NOT NULL AUTO_INCREMENT,
+--     cartId INT NOT NULL,
+--     shoeId INT NOT NULL,
+--     PRIMARY KEY (id),
+
+--     FOREIGN KEY (cartId)
+--         REFERENCES carts(id)
+--         ON DELETE CASCADE,
+
+--     FOREIGN KEY (shoeId)
+--         REFERENCES shoes(id)
+--         ON DELETE CASCADE
+-- )
