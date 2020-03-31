@@ -6,8 +6,6 @@
 -- );
 
 
-
-
 -- NOTE SHOES | ONE TO MANY RELATIONSHIP
 
 -- CREATE TABLE shoes (
@@ -22,3 +20,12 @@
 --         REFERENCES manufacturers(id)
 --         ON DELETE CASCADE
 -- );
+
+
+-- NOTE Cart
+
+-- CREATE TABLE carts (
+--     id INT NOT NULL AUTO_INCREMENT,
+--     name VARCHAR(255) NOT NULL,
+--     PRIMARY KEY (id)
+-- )
